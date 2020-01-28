@@ -3,18 +3,22 @@ package quantitymeasurement;
 import java.util.Objects;
 
 public class QuantityMeasurment {
-Length unit;
+public Length length;
+public  UnitType unitType;
 
     public QuantityMeasurment(Length unit) {
-        this.unit = unit;
+        this.length = unit;
+    }
+
+    public QuantityMeasurment() {
     }
 
     public double getConversionValue() {
 
-        if (UnitType.FEET.equals(unit.unitType))
-            return unit.value * 12;
-        if (UnitType.INCH.equals(unit))
-            return unit.value / 12;
+        if (UnitType.FEET.equals(length.unitType))
+            return length.value * 12;
+        if (UnitType.INCH.equals(length))
+            return length.value / 12;
 
         return 0;
     }
@@ -22,10 +26,12 @@ Length unit;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         QuantityMeasurment that = (QuantityMeasurment) o;
-        return Objects.equals(unit, that.unit);
+        return Objects.equals(length.value, that.length.value) ;
     }
 
 
