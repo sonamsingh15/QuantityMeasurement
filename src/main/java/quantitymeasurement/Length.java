@@ -20,4 +20,12 @@ public class Length {
         return Double.compare(length.value, value) == 0 &&
                 unitType == length.unitType;
     }
+
+    @Override
+    public String toString() {
+        return "Length{" +
+                "value=" + value +
+                ", unitType=" + unitType +
+                '}';
+    }
 }
