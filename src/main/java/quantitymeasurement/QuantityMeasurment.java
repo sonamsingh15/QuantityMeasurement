@@ -17,8 +17,8 @@ public  UnitType unitType;
 
         if (UnitType.FEET.equals(length.unitType))
             return length.value * 12;
-        if (UnitType.INCH.equals(length))
-            return length.value / 12;
+        if (UnitType.INCH.equals(length.unitType))
+            return length.value;
 
         return 0;
     }
