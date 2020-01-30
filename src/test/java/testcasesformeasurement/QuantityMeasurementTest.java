@@ -203,4 +203,17 @@ public class QuantityMeasurementTest {
         Length add = legth1.add(legth1, length2, UnitType.INCH);
         Assert.assertEquals(24.0, add.value, 0.0);
     }
+
+
+    //Test case for Two Inch plus 2.5 CM Is Equal To Three Inch
+    @Test
+    public void whenGivenTwoInchLength_PlusCentiMeterLength_ShouldReturnAdditionOfLength() {
+        Length value1 = new Length(2, UnitType.INCH);
+        Length value2 = new Length(2.5, UnitType.CENTIMETER);
+        QuantityMeasurment legth1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        Length add = legth1.add(legth1, length2, UnitType.INCH);
+        System.out.println(add);
+        Assert.assertEquals(3.0, add.value, 0.0);
+    }
 }
