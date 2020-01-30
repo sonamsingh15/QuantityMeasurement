@@ -15,7 +15,7 @@ public class QuantityMeasurementTest {
         Length length1 = new Length(0, UnitType.FEET);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(length);
         QuantityMeasurment expectedLength = new QuantityMeasurment(length1);
-        Assert.assertEquals(expectedLength,quantityMeasurment);
+        Assert.assertEquals(expectedLength, quantityMeasurment);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(length);
         Length length1 = new Length(0, UnitType.FEET);
         QuantityMeasurment quantityMeasurment1 = new QuantityMeasurment(length1);
-        Assert.assertEquals(quantityMeasurment,quantityMeasurment1);
+        Assert.assertEquals(quantityMeasurment, quantityMeasurment1);
     }
 
     // Test Case For Inch
@@ -68,10 +68,10 @@ public class QuantityMeasurementTest {
     public void whenGivenZeroInch_ShouldReturnZeroFeet() {
         Length lengthInInch = new Length(0, UnitType.INCH);
         Length lengthInFeet = new Length(0, UnitType.FEET);
-        QuantityMeasurment lengthToBeConvert  = new QuantityMeasurment(lengthInInch);
+        QuantityMeasurment lengthToBeConvert = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInFeet);
         lengthToBeConvert.getConversionValue("InchToFeet");
-        Assert.assertEquals(expectedLength,lengthToBeConvert);
+        Assert.assertEquals(expectedLength, lengthToBeConvert);
     }
 
     // Test Case For 1 Feet Is Not Equal To 1 Inch
@@ -95,6 +95,7 @@ public class QuantityMeasurementTest {
         Assert.assertFalse(quantityMeasurment.equals(lengthInFeet));
 
     }
+
     // Test Case For 1 Feet Is  Equal to 12 Inch
     @Test
     public void whenGivenOneFeet_ShouldReturnTwelveInch() {
@@ -103,10 +104,11 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInInch);
         convertedLength.getConversionValue("FeetToInch");
-        Assert.assertEquals(expectedLength , convertedLength);
+        Assert.assertEquals(expectedLength, convertedLength);
 
 
     }
+
     // Test Case For 12 Inch Is Equal to 1 Feet
     @Test
     public void whenGivenTwelveInch_ShouldReturnOneFeet() {
@@ -115,7 +117,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInFeet);
         convertedLength.getConversionValue("InchToFeet");
-        Assert.assertEquals(expectedLength , convertedLength);
+        Assert.assertEquals(expectedLength, convertedLength);
     }
 
     @Test
@@ -125,7 +127,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
         convertedLength.getConversionValue("FeetToYard");
-        Assert.assertEquals(expectedLength,convertedLength);
+        Assert.assertEquals(expectedLength, convertedLength);
     }
 
     @Test
@@ -135,7 +137,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
         convertedLength.getConversionValue("FeetToYard");
-        Assert.assertNotEquals(expectedLength,convertedLength);
+        Assert.assertNotEquals(expectedLength, convertedLength);
     }
 
     @Test
@@ -145,8 +147,9 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
         convertedLength.getConversionValue("InchToYard");
-        Assert.assertNotEquals(expectedLength,convertedLength);
+        Assert.assertNotEquals(expectedLength, convertedLength);
     }
+
     @Test
     public void whenGivenOneYardLength_ShouldNotReturnOneInch() {
         Length lengthInYard = new Length(1, UnitType.YARD);
@@ -154,16 +157,30 @@ public class QuantityMeasurementTest {
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInYard);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInInch);
         convertedLength.getConversionValue("YardToInch");
-        Assert.assertEquals(expectedLength,convertedLength);
+        Assert.assertEquals(expectedLength, convertedLength);
     }
+
     @Test
     public void whenGivenTwoInch_ShouldReturnFiveCentiMeter() {
         Length lengthInInch = new Length(2, UnitType.INCH);
         Length lengthInCM = new Length(5, UnitType.CENTIMETER);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInCM);
-        convertedLength.getConversionValue("InchTOCM");
-        Assert.assertEquals(expectedLength,convertedLength);
+        convertedLength.getConversionValue("InchToCM");
+        Assert.assertEquals(expectedLength, convertedLength);
     }
 
+    //Test case for Two inch Plus Two inch Equal to 4 inch
+    @Test
+    public void whenGivenTwoInchlength_PlusTwoInchLength_ShouldReturnAdditionOfLength() {
+        Length value1 = new Length(2, UnitType.INCH);
+        Length value2 = new Length(2, UnitType.INCH);
+        QuantityMeasurment legth1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        Length add = legth1.add(legth1, length2, UnitType.INCH);
+        System.out.println(add);
+        Assert.assertEquals(4.0, add.value, 0.0);
+
+
+    }
 }

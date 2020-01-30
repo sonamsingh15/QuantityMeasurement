@@ -1,5 +1,6 @@
 package quantitymeasurement;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -17,12 +18,12 @@ public class QuantityMeasurment {
         conversionType = new HashMap<>();
         conversionType.put("FeetToInch", 12.00);
         conversionType.put("InchToFeet", 1 / 12.00);
-        conversionType.put("FeetToYard",  (1/3.00));
-        conversionType.put("FeetToYard",  (1/3.00));
-        conversionType.put("InchToYard",  (1/36.00));
-        conversionType.put("YardToInch",(36.00));
-        conversionType.put("YardToFeet",(3.00));
-        conversionType.put("InchTOCM",2.5);
+        conversionType.put("FeetToYard", (1 / 3.00));
+        conversionType.put("InchToYard", (1 / 36.00));
+        conversionType.put("YardToInch", (36.00));
+        conversionType.put("YardToFeet", (3.00));
+        conversionType.put("InchToCM", 2.5);
+        conversionType.put("InchToInch", 1.0);
 
 
     }
@@ -30,10 +31,32 @@ public class QuantityMeasurment {
     public Length getConversionValue(String typeOfConversion) {
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-       // this.length.unitType = UnitType.valueOf(typeOfConversion.split("To")[1].toUpperCase());
+        this.length.unitType = UnitType.valueOf(typeOfConversion.toLowerCase().split("to")[0].toUpperCase());
         return length;
+    }
+
+    public Length add(QuantityMeasurment firstLength, QuantityMeasurment secondLength, UnitType resultantUnit) {
+        Length length1 = firstLength.length;
+        Length length2 = secondLength.length;
+        if (!this.length.unitType.equals(resultantUnit)) {
+            String conversionType = this.getConversionType(resultantUnit);
+            length1 = this.getConversionValue(conversionType);
+            System.out.println(length1);
+        }
+        if (!secondLength.length.unitType.equals(resultantUnit)) {
+            this.length = length2;
+            String conversionType = this.getConversionType(resultantUnit);
+            length2 = this.getConversionValue(conversionType);
+            System.out.println(length2);
+        }
+        return new Length(length1.value + length2.value, resultantUnit);
+    }
 
 
+    private String getConversionType(UnitType unitType) {
+        return this.length.unitType.name().split("")[0] +
+                this.length.unitType.name().substring(1, this.length.unitType.name().length()).toLowerCase()
+                + "To" + unitType.name().split("")[0] + unitType.name().substring(1, unitType.name().length()).toLowerCase();
     }
 
 
@@ -56,4 +79,6 @@ public class QuantityMeasurment {
                 ", conversionStatus=" + conversionStatus +
                 '}';
     }
+
+
 }
