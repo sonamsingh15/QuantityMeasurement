@@ -239,4 +239,16 @@ public class QuantityMeasurementTest {
 
     }
 
+    //Add volumes in Litres
+    @Test
+    public void whenGivenOneLitre_PlusHundredMilliLiter_ShouldReturnAdditionOflitres() {
+        Length value1 = new Length(1, UnitType.LITRE);
+        Length value2 = new Length(1000, UnitType.MILILITRE);
+        QuantityMeasurment length1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        Length add = length1.add(length1, length2, UnitType.LITRE);
+        System.out.println(add);
+        Assert.assertEquals(2.0, add.value, 0.0);
+    }
+
 }
