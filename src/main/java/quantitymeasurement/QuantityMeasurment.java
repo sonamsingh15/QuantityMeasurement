@@ -28,7 +28,8 @@ public class QuantityMeasurment {
         conversionType.put("CentimeterToInch",1/2.5);
         conversionType.put("GallonToLitre",3.78);
         conversionType.put("LitreToMiliLitre",1000.00);
-
+        conversionType.put("KilogramToGram",1000.00);
+        conversionType.put("TonneToKilogram",1000.00);
 
     }
 
@@ -36,7 +37,7 @@ public class QuantityMeasurment {
         System.out.println(typeOfConversion);
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-        this.length.unitType = UnitType.valueOf(typeOfConversion.toLowerCase().split("to")[1].toUpperCase());
+        this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1,typeOfConversion.length()).toLowerCase().split("to")[1].toUpperCase());
         System.out.println(length);
         return length;
     }

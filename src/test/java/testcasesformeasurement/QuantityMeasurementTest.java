@@ -234,7 +234,7 @@ public class QuantityMeasurementTest {
         Length value2 = new Length(3.78, UnitType.LITRE);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
         QuantityMeasurment expected=new QuantityMeasurment(value2);
-        quantityMeasurment.getConversionValue("LitresToGallon");
+        quantityMeasurment.getConversionValue("GallonToLitre");
         Assert.assertTrue(quantityMeasurment.equals(expected));
 
     }
@@ -258,8 +258,38 @@ public class QuantityMeasurementTest {
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
         Length add = length1.add(length1, length2, UnitType.LITRE);
-        System.out.println(add);
         Assert.assertEquals(7.56, add.value, 0.0);
     }
 
+    @Test
+    public void whenGiven1LengtOneKg_ShouldReturnThousandGrams() {
+        Length value1 = new Length(1, UnitType.KILOGRAM);
+        Length value2 = new Length(1000, UnitType.GRAM);
+        QuantityMeasurment length1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        length1.getConversionValue("KilogramToGram");
+        Assert.assertEquals(length1,length2);
+    }
+
+    @Test
+    public void whenGivenOneTones_ShouldReturnThousandKg() {
+
+        Length value1 = new Length(1, UnitType.TONE);
+        Length value2 = new Length(1000, UnitType.KILOGRAM);
+        QuantityMeasurment length1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        length1.getConversionValue("TonneToKilogram");
+        Assert.assertEquals(length1,length2);
+
+    }
+
+    @Test
+    public void whenGivenOneTonneAndThousandGram_PerformAddition() {
+        Length value1 = new Length(1, UnitType.TONE);
+        Length value2 = new Length(1000, UnitType.KILOGRAM);
+        QuantityMeasurment length1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        length1.getConversionValue("TonneToKilogram");
+        Assert.assertEquals(length1,length2);
+    }
 }
