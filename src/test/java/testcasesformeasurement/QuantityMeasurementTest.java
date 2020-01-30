@@ -250,5 +250,16 @@ public class QuantityMeasurementTest {
         System.out.println(add);
         Assert.assertEquals(2.0, add.value, 0.0);
     }
+    //Add volumes in Litres
+    @Test
+    public void whenGivenOneGallonAndOneLiter_AddedInLiter_ShouldReturnProperResultInLiter() {
+        Length value1 = new Length(1, UnitType.GALLON);
+        Length value2 = new Length(3.78, UnitType.LITRE);
+        QuantityMeasurment length1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        Length add = length1.add(length1, length2, UnitType.LITRE);
+        System.out.println(add);
+        Assert.assertEquals(7.56, add.value, 0.0);
+    }
 
 }

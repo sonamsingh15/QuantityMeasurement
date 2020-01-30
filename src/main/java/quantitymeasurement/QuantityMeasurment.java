@@ -26,7 +26,7 @@ public class QuantityMeasurment {
         conversionType.put("InchToInch", 1.0);
         conversionType.put("MililitreToLitre",(1/1000.00));
         conversionType.put("CentimeterToInch",1/2.5);
-        conversionType.put("LitresToGallon",3.78);
+        conversionType.put("GallonToLitre",3.78);
         conversionType.put("LitreToMiliLitre",1000.00);
 
 
