@@ -218,14 +218,25 @@ public class QuantityMeasurementTest {
     }
     //Test case for 1 litre equals to 1000 Mililiter
     @Test
-    public void whenGivenMiliLiter_ShouldReturnOneLiter() {
+    public void whenGivenLitre_ShouldReturnMilitre() {
         Length value1 = new Length(1, UnitType.LITRE);
         Length value2 = new Length(1000.0, UnitType.MILILITRE);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
+        QuantityMeasurment expected=new QuantityMeasurment(value2);
         quantityMeasurment.getConversionValue("LitreToMiliLitre");
-        Assert.assertFalse(quantityMeasurment.equals(value2));
+        Assert.assertTrue(quantityMeasurment.equals(expected));
 
     }
+    //Test case for 1 gallon equals to 3.78 litres
+    @Test
+    public void whenGivenOneGallon_ShouldReturnLitres() {
+        Length value1 = new Length(1, UnitType.GALLON);
+        Length value2 = new Length(3.78, UnitType.LITRE);
+        QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
+        QuantityMeasurment expected=new QuantityMeasurment(value2);
+        quantityMeasurment.getConversionValue("LitresToGallon");
+        Assert.assertTrue(quantityMeasurment.equals(expected));
 
+    }
 
 }
