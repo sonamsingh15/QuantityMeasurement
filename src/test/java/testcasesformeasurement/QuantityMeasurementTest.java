@@ -166,7 +166,7 @@ public class QuantityMeasurementTest {
         Length lengthInCM = new Length(5, UnitType.CENTIMETER);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInCM);
-        convertedLength.getConversionValue("InchToCM");
+        convertedLength.getConversionValue("InchToCentimeter");
         Assert.assertEquals(expectedLength, convertedLength);
     }
 
@@ -216,4 +216,16 @@ public class QuantityMeasurementTest {
         System.out.println(add);
         Assert.assertEquals(3.0, add.value, 0.0);
     }
+    //Test case for 1 litre equals to 1000 Mililiter
+    @Test
+    public void whenGivenMiliLiter_ShouldReturnOneLiter() {
+        Length value1 = new Length(1, UnitType.LITRE);
+        Length value2 = new Length(1000.0, UnitType.MILILITRE);
+        QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
+        quantityMeasurment.getConversionValue("LitreToMiliLitre");
+        Assert.assertFalse(quantityMeasurment.equals(value2));
+
+    }
+
+
 }

@@ -24,7 +24,11 @@ public class QuantityMeasurment {
         conversionType.put("YardToFeet", (3.00));
         conversionType.put("InchToCentimeter", 2.5);
         conversionType.put("InchToInch", 1.0);
+        conversionType.put("MililiterToLITER",(1/1000.00));
         conversionType.put("CentimeterToInch",1/2.5);
+        //conversionType.put("MILILITER",1/2.5);
+        conversionType.put("LitreToMiliLitre",1000.00);
+
 
     }
 
@@ -32,7 +36,8 @@ public class QuantityMeasurment {
         System.out.println(typeOfConversion);
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-        this.length.unitType = UnitType.valueOf(typeOfConversion.toLowerCase().split("to")[0].toUpperCase());
+        this.length.unitType = UnitType.valueOf(typeOfConversion.toLowerCase().split("to")[1].toUpperCase());
+        System.out.println(length);
         return length;
     }
 
