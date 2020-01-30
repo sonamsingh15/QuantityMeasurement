@@ -178,9 +178,18 @@ public class QuantityMeasurementTest {
         QuantityMeasurment legth1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
         Length add = legth1.add(legth1, length2, UnitType.INCH);
-        System.out.println(add);
         Assert.assertEquals(4.0, add.value, 0.0);
+    }
 
+    //Test case for one Feet plus Two inch Is Equal to 14 inch
 
+    @Test
+    public void whenGivenOneFeetlength_PlusTwoInchLength_ShouldReturnAdditionOfLength() {
+        Length value1 = new Length(1, UnitType.FEET);
+        Length value2 = new Length(2, UnitType.INCH);
+        QuantityMeasurment legth1 = new QuantityMeasurment(value1);
+        QuantityMeasurment length2 = new QuantityMeasurment(value2);
+        Length add = legth1.add(legth1, length2, UnitType.INCH);
+        Assert.assertEquals(14.0, add.value, 0.0);
     }
 }
