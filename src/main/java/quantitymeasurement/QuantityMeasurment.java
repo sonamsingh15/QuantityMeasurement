@@ -22,6 +22,7 @@ public class QuantityMeasurment {
         conversionType.put("InchToYard",  (1/36.00));
         conversionType.put("YardToInch",(36.00));
         conversionType.put("YardToFeet",(3.00));
+        conversionType.put("InchTOCM",2.5);
 
 
     }
@@ -29,11 +30,12 @@ public class QuantityMeasurment {
     public Length getConversionValue(String typeOfConversion) {
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-        this.length.unitType = UnitType.valueOf(typeOfConversion.split("To")[1].toUpperCase());
+       // this.length.unitType = UnitType.valueOf(typeOfConversion.split("To")[1].toUpperCase());
         return length;
 
 
     }
+
 
     @Override
     public boolean equals(Object o) {

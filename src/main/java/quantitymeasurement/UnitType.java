@@ -1,6 +1,6 @@
 package quantitymeasurement;
 
 public enum  UnitType {
-         INCH,FEET,YARD;
+         INCH,FEET,YARD,CENTIMETER;
 }
 

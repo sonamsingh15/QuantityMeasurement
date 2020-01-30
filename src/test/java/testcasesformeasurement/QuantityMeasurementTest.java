@@ -156,5 +156,14 @@ public class QuantityMeasurementTest {
         convertedLength.getConversionValue("YardToInch");
         Assert.assertEquals(expectedLength,convertedLength);
     }
+    @Test
+    public void whenGivenTwoInch_ShouldReturnFiveCentiMeter() {
+        Length lengthInInch = new Length(2, UnitType.INCH);
+        Length lengthInCM = new Length(5, UnitType.CENTIMETER);
+        QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
+        QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInCM);
+        convertedLength.getConversionValue("InchTOCM");
+        Assert.assertEquals(expectedLength,convertedLength);
+    }
 
 }
