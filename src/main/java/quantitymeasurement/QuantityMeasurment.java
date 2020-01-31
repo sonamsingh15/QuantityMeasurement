@@ -54,7 +54,7 @@ public class QuantityMeasurment {
             String conversionType = this.getConversionType(resultantUnit);
             length2 = this.getConversionValue(conversionType);
         }
-        return new Length(length1.value + length2.value, resultantUnit);
+        return new Length(length1.value + length2.value,resultantUnit);
     }
 
 
