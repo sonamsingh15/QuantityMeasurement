@@ -292,4 +292,15 @@ public class QuantityMeasurementTest {
         length1.getConversionValue("TonneToKilogram");
         Assert.assertEquals(length1,length2);
     }
+
+
+    @Test
+    public void whenGivenFahrenheit_ShouldReturnInCelusius() {
+        Length value1 = new Length(212, UnitType.FAHRENHEIT);
+        Length value2 = new Length(100, UnitType.CELSIUS);
+        QuantityMeasurment convertedValue = new QuantityMeasurment(value1);
+        QuantityMeasurment expectedValue = new QuantityMeasurment(value2);
+        convertedValue.getConversionValue("FahrenheitToCelsius");
+        Assert.assertEquals(convertedValue,expectedValue);
+    }
 }

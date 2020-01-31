@@ -30,11 +30,14 @@ public class QuantityMeasurment {
         conversionType.put("LitreToMiliLitre",1000.00);
         conversionType.put("KilogramToGram",1000.00);
         conversionType.put("TonneToKilogram",1000.00);
-
+        conversionType.put("FahrenheitToCelsius",5.00/9.00);
     }
 
     public Length getConversionValue(String typeOfConversion) {
         System.out.println(typeOfConversion);
+        if(typeOfConversion.equals("FahrenheitToCelsius")){
+            this.length.value = this.length.value-32;
+        }
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
         this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1,typeOfConversion.length()).toLowerCase().split("to")[1].toUpperCase());
