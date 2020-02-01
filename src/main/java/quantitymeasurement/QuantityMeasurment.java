@@ -1,9 +1,9 @@
 package quantitymeasurement;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 public class QuantityMeasurment {
     public Length length;
@@ -12,10 +12,9 @@ public class QuantityMeasurment {
     Map<String, Double> conversionType;
 
     public QuantityMeasurment(Length length) {
-
         this.length = length;
         conversionStatus = false;
-        conversionType = new HashMap<>();
+        conversionType = new TreeMap<>();
         conversionType.put("FeetToInch", 12.00);
         conversionType.put("InchToFeet", 1 / 12.00);
         conversionType.put("FeetToYard", (1 / 3.00));
@@ -24,23 +23,28 @@ public class QuantityMeasurment {
         conversionType.put("YardToFeet", (3.00));
         conversionType.put("InchToCentimeter", 2.5);
         conversionType.put("InchToInch", 1.0);
-        conversionType.put("MililitreToLitre",(1/1000.00));
-        conversionType.put("CentimeterToInch",1/2.5);
-        conversionType.put("GallonToLitre",3.78);
-        conversionType.put("LitreToMiliLitre",1000.00);
-        conversionType.put("KilogramToGram",1000.00);
-        conversionType.put("TonneToKilogram",1000.00);
-        conversionType.put("FahrenheitToCelsius",5.00/9.00);
+        conversionType.put("MililitreToLitre", (1 / 1000.00));
+        conversionType.put("CentimeterToInch", 1 / 2.5);
+        conversionType.put("GallonToLitre", 3.78);
+        conversionType.put("LitreToMiliLitre", 1000.00);
+        conversionType.put("KilogramToGram", 1000.00);
+        conversionType.put("TonneToKilogram", 1000.00);
+        conversionType.put("FahrenheitToCelsius", 5.00 / 9.00);
     }
 
     public Length getConversionValue(String typeOfConversion) {
-        System.out.println(typeOfConversion);
-        if(typeOfConversion.equals("FahrenheitToCelsius")){
-            this.length.value = this.length.value-32;
+        String unitType = this.length.unitType.name().toLowerCase();
+        if(!unitType.substring(1,unitType.length()).equals
+                (typeOfConversion.substring(1,unitType.length()).split("to")[0])){
+            throw new RuntimeException("Invalid Type");
+
+        }
+        if (typeOfConversion.equals("FahrenheitToCelsius")) {
+            this.length.value = this.length.value - 32;
         }
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-        this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1,typeOfConversion.length()).toLowerCase().split("to")[1].toUpperCase());
+        this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1, typeOfConversion.length()).toLowerCase().split("to")[1].toUpperCase());
         System.out.println(length);
         return length;
     }
@@ -57,7 +61,7 @@ public class QuantityMeasurment {
             String conversionType = this.getConversionType(resultantUnit);
             length2 = this.getConversionValue(conversionType);
         }
-        return new Length(length1.value + length2.value,resultantUnit);
+        return new Length(length1.value + length2.value, resultantUnit);
     }
 
 
@@ -87,7 +91,6 @@ public class QuantityMeasurment {
                 ", conversionStatus=" + conversionStatus +
                 '}';
     }
-
 
 
 }

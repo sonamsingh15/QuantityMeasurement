@@ -274,7 +274,7 @@ public class QuantityMeasurementTest {
     @Test
     public void whenGivenOneTones_ShouldReturnThousandKg() {
 
-        Length value1 = new Length(1, UnitType.TONE);
+        Length value1 = new Length(1, UnitType.TONNE);
         Length value2 = new Length(1000, UnitType.KILOGRAM);
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
@@ -285,7 +285,7 @@ public class QuantityMeasurementTest {
 
     @Test
     public void whenGivenOneTonneAndThousandGram_PerformAddition() {
-        Length value1 = new Length(1, UnitType.TONE);
+        Length value1 = new Length(1, UnitType.TONNE);
         Length value2 = new Length(1000, UnitType.KILOGRAM);
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
