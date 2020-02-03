@@ -1,17 +1,16 @@
 package quantitymeasurement;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
 public class QuantityMeasurment {
-    public Length length;
+    public Unit length;
     public UnitType unitType;
     private boolean conversionStatus;
     Map<String, Double> conversionType;
 
-    public QuantityMeasurment(Length length) {
+    public QuantityMeasurment(Unit length) {
         this.length = length;
         conversionStatus = false;
         conversionType = new TreeMap<>();
@@ -32,7 +31,7 @@ public class QuantityMeasurment {
         conversionType.put("FahrenheitToCelsius", 5.00 / 9.00);
     }
 
-    public Length getConversionValue(String typeOfConversion) {
+    public Unit getConversionValue(String typeOfConversion) {
         String unitType = this.length.unitType.name().toLowerCase();
         if(!unitType.substring(1,unitType.length()).equals
                 (typeOfConversion.substring(1,unitType.length()).split("to")[0])){
@@ -49,9 +48,9 @@ public class QuantityMeasurment {
         return length;
     }
 
-    public Length add(QuantityMeasurment firstLength, QuantityMeasurment secondLength, UnitType resultantUnit) {
-        Length length1 = firstLength.length;
-        Length length2 = secondLength.length;
+    public Unit add(QuantityMeasurment firstLength, QuantityMeasurment secondLength, UnitType resultantUnit) {
+        Unit length1 = firstLength.length;
+        Unit length2 = secondLength.length;
         if (!this.length.unitType.equals(resultantUnit)) {
             String conversionType = this.getConversionType(resultantUnit);
             length1 = this.getConversionValue(conversionType);
@@ -61,7 +60,7 @@ public class QuantityMeasurment {
             String conversionType = this.getConversionType(resultantUnit);
             length2 = this.getConversionValue(conversionType);
         }
-        return new Length(length1.value + length2.value, resultantUnit);
+        return new Unit(length1.value + length2.value, resultantUnit);
     }
 
 
