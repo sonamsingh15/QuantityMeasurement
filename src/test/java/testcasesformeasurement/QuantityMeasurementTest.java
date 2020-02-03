@@ -32,7 +32,8 @@ public class QuantityMeasurementTest {
         Unit length = new Unit(0, UnitType.FEET);
         Unit length1 = new Unit(0, UnitType.FEET);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(length);
-        Assert.assertEquals(true, quantityMeasurment.length.getClass().equals(length1.getClass()));
+        Assert.assertEquals(true, quantityMeasurment.length.getClass().
+                equals(length1.getClass()));
     }
 
     //
@@ -65,45 +66,41 @@ public class QuantityMeasurementTest {
 
     // Test Cases For Inch And Feet To Return equals 0
     @Test
-    public void whenGivenZeroInch_ShouldReturnZeroFeet() {
+    public void whenGivenZeroInch_ShouldEqualToZeroFeet() {
         Unit lengthInInch = new Unit(0, UnitType.INCH);
         Unit lengthInFeet = new Unit(0, UnitType.FEET);
         QuantityMeasurment lengthToBeConvert = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInFeet);
-        lengthToBeConvert.getConversionValue("InchToFeet");
         Assert.assertEquals(expectedLength, lengthToBeConvert);
     }
 
     // Test Case For 1 Feet Is Not Equal To 1 Inch
     @Test
-    public void whenGivenOneFeet_ShouldNotReturnOneInch() {
+    public void whenGivenOneFeet_ShouldNotEqualToOneInch() {
         Unit lengthInFeet = new Unit(1, UnitType.FEET);
         Unit lengthInInch = new Unit(1, UnitType.INCH);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(lengthInFeet);
-        quantityMeasurment.getConversionValue("FeetToInch");
         Assert.assertFalse(quantityMeasurment.equals(lengthInInch));
 
     }
     //Test case For 1 Inch Is Not Equal To 1 Feet
 
     @Test
-    public void whenGivenOneInch_ShouldNotReturnOneFeet() {
+    public void whenGivenOneInch_ShouldNotEqualToOneFeet() {
         Unit lengthInInch = new Unit(1, UnitType.INCH);
         Unit lengthInFeet = new Unit(1, UnitType.FEET);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(lengthInInch);
-        quantityMeasurment.getConversionValue("InchToFeet");
         Assert.assertFalse(quantityMeasurment.equals(lengthInFeet));
 
     }
 
     // Test Case For 1 Feet Is  Equal to 12 Inch
     @Test
-    public void whenGivenOneFeet_ShouldReturnTwelveInch() {
+    public void whenGivenOneFeet_ShouldEqualsToTwelveInch() {
         Unit lengthInFeet = new Unit(1, UnitType.FEET);
         Unit lengthInInch = new Unit(12, UnitType.INCH);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInInch);
-        convertedLength.getConversionValue("FeetToInch");
         Assert.assertEquals(expectedLength, convertedLength);
 
 
@@ -111,62 +108,56 @@ public class QuantityMeasurementTest {
 
     // Test Case For 12 Inch Is Equal to 1 Feet
     @Test
-    public void whenGivenTwelveInch_ShouldReturnOneFeet() {
+    public void whenGivenTwelveInch_ShouldEqualToOneFeet() {
         Unit lengthInInch = new Unit(12, UnitType.INCH);
         Unit lengthInFeet = new Unit(1, UnitType.FEET);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInFeet);
-        convertedLength.getConversionValue("InchToFeet");
         Assert.assertEquals(expectedLength, convertedLength);
     }
 
     @Test
-    public void whenGivenThreeFeetLength_ShouldReturnOneYard() {
+    public void whenGivenThreeFeetLength_ShouldEqualToOneYard() {
         Unit lengthInFeet = new Unit(3, UnitType.FEET);
         Unit lengthInYard = new Unit(1, UnitType.YARD);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
-        convertedLength.getConversionValue("FeetToYard");
         Assert.assertEquals(expectedLength, convertedLength);
     }
 
     @Test
-    public void whenGivenOneFeetLength_ShouldNotReturnOneYard() {
+    public void whenGivenOneFeetLength_ShouldNotEqualToOneYard() {
         Unit lengthInFeet = new Unit(1, UnitType.FEET);
         Unit lengthInYard = new Unit(1, UnitType.YARD);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
-        convertedLength.getConversionValue("FeetToYard");
         Assert.assertNotEquals(expectedLength, convertedLength);
     }
 
     @Test
-    public void whenGivenOneInchLength_ShouldNotReturnOneYard() {
+    public void whenGivenOneInchLength_ShouldNotEqualToOneYard() {
         Unit lengthInFeet = new Unit(1, UnitType.INCH);
         Unit lengthInYard = new Unit(1, UnitType.YARD);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInFeet);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInYard);
-        convertedLength.getConversionValue("InchToYard");
         Assert.assertNotEquals(expectedLength, convertedLength);
     }
 
     @Test
-    public void whenGivenOneYardLength_ShouldNotReturnOneInch() {
+    public void whenGivenOneYardLength_ShouldNotEqualToOneInch() {
         Unit lengthInYard = new Unit(1, UnitType.YARD);
         Unit lengthInInch = new Unit(36, UnitType.INCH);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInYard);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInInch);
-        convertedLength.getConversionValue("YardToInch");
         Assert.assertEquals(expectedLength, convertedLength);
     }
 
     @Test
-    public void whenGivenTwoInch_ShouldReturnFiveCentiMeter() {
+    public void whenGivenTwoInch_ShouldEqualToFiveCentiMeter() {
         Unit lengthInInch = new Unit(2, UnitType.INCH);
         Unit lengthInCM = new Unit(5, UnitType.CENTIMETER);
         QuantityMeasurment convertedLength = new QuantityMeasurment(lengthInInch);
         QuantityMeasurment expectedLength = new QuantityMeasurment(lengthInCM);
-        convertedLength.getConversionValue("InchToCentimeter");
         Assert.assertEquals(expectedLength, convertedLength);
     }
 
@@ -218,23 +209,21 @@ public class QuantityMeasurementTest {
     }
     //Test case for 1 litre equals to 1000 Mililiter
     @Test
-    public void whenGivenLitre_ShouldReturnMilitre() {
-        Unit value1 = new Unit(1, UnitType.LITRE);
+    public void whenGivenLitre_ShouldEqualToMilitre() {
+        Unit value1 = new Unit(1.0, UnitType.LITRE);
         Unit value2 = new Unit(1000.0, UnitType.MILILITRE);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
         QuantityMeasurment expected=new QuantityMeasurment(value2);
-        quantityMeasurment.getConversionValue("LitreToMiliLitre");
         Assert.assertTrue(quantityMeasurment.equals(expected));
 
     }
     //Test case for 1 gallon equals to 3.78 litres
     @Test
-    public void whenGivenOneGallon_ShouldReturnLitres() {
+    public void whenGivenOneGallon_ShouldEqualToLitres() {
         Unit value1 = new Unit(1, UnitType.GALLON);
         Unit value2 = new Unit(3.78, UnitType.LITRE);
         QuantityMeasurment quantityMeasurment = new QuantityMeasurment(value1);
         QuantityMeasurment expected=new QuantityMeasurment(value2);
-        quantityMeasurment.getConversionValue("GallonToLitre");
         Assert.assertTrue(quantityMeasurment.equals(expected));
 
     }
@@ -247,7 +236,6 @@ public class QuantityMeasurementTest {
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
         Unit add = length1.add(length1, length2, UnitType.LITRE);
-        System.out.println(add);
         Assert.assertEquals(2.0, add.value, 0.0);
     }
     //Add volumes in Litres
@@ -262,23 +250,21 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void whenGiven1LengtOneKg_ShouldReturnThousandGrams() {
+    public void whenGiven1LengtOneKg_ShouldQualToThousandGrams() {
         Unit value1 = new Unit(1, UnitType.KILOGRAM);
         Unit value2 = new Unit(1000, UnitType.GRAM);
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
-        length1.getConversionValue("KilogramToGram");
         Assert.assertEquals(length1,length2);
     }
 
     @Test
-    public void whenGivenOneTones_ShouldReturnThousandKg() {
+    public void whenGivenOneTones_ShouldEqualToThousandKg() {
 
         Unit value1 = new Unit(1, UnitType.TONNE);
         Unit value2 = new Unit(1000, UnitType.KILOGRAM);
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
-        length1.getConversionValue("TonneToKilogram");
         Assert.assertEquals(length1,length2);
 
     }
@@ -289,18 +275,16 @@ public class QuantityMeasurementTest {
         Unit value2 = new Unit(1000, UnitType.KILOGRAM);
         QuantityMeasurment length1 = new QuantityMeasurment(value1);
         QuantityMeasurment length2 = new QuantityMeasurment(value2);
-        length1.getConversionValue("TonneToKilogram");
         Assert.assertEquals(length1,length2);
     }
 
 
     @Test
-    public void whenGivenFahrenheit_ShouldReturnInCelusius() {
+    public void whenGivenFahrenheit_ShouldEqualTonCelusius() {
         Unit value1 = new Unit(212, UnitType.FAHRENHEIT);
         Unit value2 = new Unit(100, UnitType.CELSIUS);
         QuantityMeasurment convertedValue = new QuantityMeasurment(value1);
         QuantityMeasurment expectedValue = new QuantityMeasurment(value2);
-        convertedValue.getConversionValue("FahrenheitToCelsius");
         Assert.assertEquals(convertedValue,expectedValue);
     }
 }

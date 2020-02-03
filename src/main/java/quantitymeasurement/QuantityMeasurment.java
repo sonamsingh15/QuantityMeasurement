@@ -43,7 +43,9 @@ public class QuantityMeasurment {
         }
         this.length.value = this.length.value * this.conversionType.get(typeOfConversion);
         this.conversionStatus = true;
-        this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1, typeOfConversion.length()).toLowerCase().split("to")[1].toUpperCase());
+        this.length.unitType = UnitType.valueOf(typeOfConversion.substring(1, typeOfConversion.length())
+                                .toLowerCase().split("to")[1]
+                                .toUpperCase());
         System.out.println(length);
         return length;
     }
@@ -65,19 +67,28 @@ public class QuantityMeasurment {
 
 
     private String getConversionType(UnitType unitType) {
+        System.out.println(this.length.unitType.name()+":"+unitType.name());
         return this.length.unitType.name().split("")[0] +
-                this.length.unitType.name().substring(1, this.length.unitType.name().length()).toLowerCase()
-                + "To" + unitType.name().split("")[0] + unitType.name().substring(1, unitType.name().length()).toLowerCase();
+                this.length.unitType.name().substring(1, this.length.unitType.name().length())
+                        .toLowerCase() + "To" + unitType.name().split("")[0]
+                        + unitType.name().substring(1, unitType.name().length()).toLowerCase();
     }
 
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
         QuantityMeasurment that = (QuantityMeasurment) o;
+
+        if (!that.length.unitType.equals(this.length.unitType)) {
+            String conversionType = this.getConversionType(that.length.unitType);
+            this.length = this.getConversionValue(conversionType);
+        }
+
         return Objects.equals(length.value, that.length.value);
 
     }
